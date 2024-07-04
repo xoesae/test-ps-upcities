@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Person;
+use App\Enums\State;
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
+ * @extends Factory<Address>
  */
 class AddressFactory extends Factory
 {
@@ -20,7 +21,7 @@ class AddressFactory extends Factory
         return [
             'street' => fake()->streetName,
             'city' => fake()->city,
-            'state' => fake()->stateAbbr,   
+            'state' => fake()->randomElement(State::toArray()),
         ];
     }
 }
