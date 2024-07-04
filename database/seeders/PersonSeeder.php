@@ -16,7 +16,6 @@ class PersonSeeder extends Seeder
     {
         Person::factory()
             ->count(10)
-            ->for(Address::factory())
             ->create();
     }
 }
