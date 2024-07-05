@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\Enums\State;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property string $street
+ * @property string $city
+ * @property state $state
+ */
 class Address extends Model
 {
     use HasFactory;
@@ -14,6 +20,10 @@ class Address extends Model
         'street',
         'city',
         'state',
+    ];
+
+    protected $casts = [
+        'state' => State::class,
     ];
 
     public function people(): HasMany
