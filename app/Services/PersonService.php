@@ -20,7 +20,8 @@ class PersonService
     public function __construct(
         private readonly PersonRepositoryInterface $personRepository,
         private readonly AddressRepositoryInterface $addressRepository
-    ) {}
+    ) {
+    }
 
     public function listAllPaginated(int $perPage, ?int $page): LengthAwarePaginator
     {

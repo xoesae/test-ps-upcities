@@ -16,7 +16,8 @@ class PersonController extends Controller
 {
     public function __construct(
         private readonly PersonService $personService,
-    ) {}
+    ) {
+    }
 
     public function index(Request $request): View|Factory|Application
     {

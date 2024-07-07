@@ -15,5 +15,6 @@ readonly class PersonDTO
         public string $email,
         public string $phoneNumber,
         public ?int $addressId = null,
-    ) {}
+    ) {
+    }
 }

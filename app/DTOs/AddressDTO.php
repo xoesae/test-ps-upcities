@@ -12,5 +12,6 @@ readonly class AddressDTO
         public string $street,
         public string $city,
         public State $state,
-    ) {}
+    ) {
+    }
 }

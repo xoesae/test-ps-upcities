@@ -11,7 +11,9 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class PersonRepository implements PersonRepositoryInterface
 {
-    public function __construct(private readonly Person $person) {}
+    public function __construct(private readonly Person $person)
+    {
+    }
 
     public function create(PersonDTO $dto): Person
     {

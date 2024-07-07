@@ -10,7 +10,9 @@ use App\Models\Address;
 
 class AddressRepository implements AddressRepositoryInterface
 {
-    public function __construct(private readonly Address $address) {}
+    public function __construct(private readonly Address $address)
+    {
+    }
 
     public function create(AddressDTO $dto): Address
     {

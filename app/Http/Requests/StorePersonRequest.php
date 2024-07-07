@@ -25,7 +25,7 @@ class StorePersonRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:1', 'max:255'],
-            'document_number' => ['required', 'string', 'size:11', 'unique:people,document_number', new CPF],
+            'document_number' => ['required', 'string', 'size:11', 'unique:people,document_number', new CPF()],
             'birth' => ['required', 'date_format:Y-m-d'],
             'email' => ['required', 'email', 'unique:people,email'],
             'phone_number' => ['required', 'string'],
