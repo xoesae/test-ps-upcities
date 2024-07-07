@@ -120,7 +120,7 @@ class PersonServiceTest extends TestCase
     {
         /** @var \App\Services\PersonService $personService */
         $personService = App::make(PersonService::class);
-        
+
         try {
             $personService->findById(1);
         } catch (PersonNotFoundException $exception) {
@@ -136,7 +136,7 @@ class PersonServiceTest extends TestCase
         $perPage = 5;
 
         $people = $personService->listAllPaginated($perPage, 2);
-                
+
         $this->assertInstanceOf(LengthAwarePaginator::class, $people);
         $this->assertCount($perPage, $people->items());
     }

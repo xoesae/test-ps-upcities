@@ -74,7 +74,7 @@ class PersonRepositoryTest extends TestCase
         /** @var PersonRepositoryInterface $repository */
         $repository = App::make(PersonRepositoryInterface::class);
         $person = Person::factory()->create();
-    
+
         $deleted = $repository->delete($person->id);
 
         $this->assertEquals(true, $deleted);
@@ -86,20 +86,21 @@ class PersonRepositoryTest extends TestCase
         /** @var PersonRepositoryInterface $repository */
         $repository = App::make(PersonRepositoryInterface::class);
         $person = Person::factory()->create();
-    
+
         $person = $repository->findById($person->id);
 
         $this->assertInstanceOf(Person::class, $person);
         $this->assertEquals(true, $person->relationLoaded('address'));
         $this->assertInstanceOf(Address::class, $person->address);
     }
+
     public function test_list_all_people_paginated(): void
     {
         /** @var PersonRepositoryInterface $repository */
         $repository = App::make(PersonRepositoryInterface::class);
         Person::factory()->count(10)->create();
         $perPage = 5;
-    
+
         $people = $repository->listAllPaginated($perPage);
 
         $this->assertInstanceOf(LengthAwarePaginator::class, $people);

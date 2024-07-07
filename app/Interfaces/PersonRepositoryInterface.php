@@ -7,13 +7,13 @@ namespace App\Interfaces;
 use App\DTOs\PersonDTO;
 use App\Models\Person;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 interface PersonRepositoryInterface
 {
     public function create(PersonDTO $dto): Person;
 
     public function update(int $id, PersonDTO $dto): int;
+
     public function delete(int $id): bool;
 
     /**

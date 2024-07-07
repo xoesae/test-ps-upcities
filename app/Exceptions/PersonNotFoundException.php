@@ -10,6 +10,6 @@ class PersonNotFoundException extends \Exception
 {
     public function __construct()
     {
-        parent::__construct("Não foi possível encontrar esta pessoa.", Response::HTTP_NOT_FOUND);
+        parent::__construct('Não foi possível encontrar esta pessoa.', Response::HTTP_NOT_FOUND);
     }
 }

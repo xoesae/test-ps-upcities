@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use DateTime;
 use App\Helpers\Formatters;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,7 +30,7 @@ class Person extends Model
         'birth',
         'email',
         'phone_number',
-        'address_id'
+        'address_id',
     ];
 
     protected $casts = [
@@ -55,7 +55,6 @@ class Person extends Model
     {
         return Carbon::parse($this->birth)->format('d/m/Y');
     }
-
 
     public function address(): BelongsTo
     {

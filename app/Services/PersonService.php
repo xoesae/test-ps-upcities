@@ -20,8 +20,7 @@ class PersonService
     public function __construct(
         private readonly PersonRepositoryInterface $personRepository,
         private readonly AddressRepositoryInterface $addressRepository
-    )
-    {}
+    ) {}
 
     public function listAllPaginated(int $perPage, ?int $page): LengthAwarePaginator
     {
@@ -32,7 +31,7 @@ class PersonService
     {
         try {
             return $this->personRepository->findById($id);
-        } catch(\Exception) {
+        } catch (\Exception) {
             throw new PersonNotFoundException();
         }
     }

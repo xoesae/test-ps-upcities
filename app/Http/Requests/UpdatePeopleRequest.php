@@ -27,9 +27,9 @@ class UpdatePeopleRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'min:1', 'max:255'],
-            'document_number' => ['required', 'string', 'size:11', 'unique:people,document_number,' . $personId, new CPF],
+            'document_number' => ['required', 'string', 'size:11', 'unique:people,document_number,'.$personId, new CPF],
             'birth' => ['required', 'date_format:Y-m-d'],
-            'email' => ['required', 'email', 'unique:people,email,' . $personId],
+            'email' => ['required', 'email', 'unique:people,email,'.$personId],
             'phone_number' => ['required', 'string'],
             'address.street' => ['required', 'string'],
             'address.city' => ['required', 'string'],
@@ -37,7 +37,6 @@ class UpdatePeopleRequest extends FormRequest
         ];
     }
 
-    
     /**
      * Get the error messages for the defined validation rules.
      *
