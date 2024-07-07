@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use DateTime;
+use App\Helpers\Formatters;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,6 +36,26 @@ class Person extends Model
     protected $casts = [
         'birth' => 'datetime',
     ];
+
+    protected function documentNumber(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => Formatters::documentNumber($value),
+        );
+    }
+
+    protected function phoneNumber(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => Formatters::phoneNumber($value),
+        );
+    }
+
+    public function getBirthFormattedAttribute(): string
+    {
+        return Carbon::parse($this->birth)->format('d/m/Y');
+    }
+
 
     public function address(): BelongsTo
     {
