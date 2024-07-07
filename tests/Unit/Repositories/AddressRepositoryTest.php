@@ -1,6 +1,6 @@
 <?php
 
-namespace Repositories;
+namespace Tests\Unit\Repositories;
 
 use App\DTOs\AddressDTO;
 use App\Interfaces\AddressRepositoryInterface;
@@ -29,5 +29,36 @@ class AddressRepositoryTest extends TestCase
             'city' => $address->city,
             'state' => $address->state->value,
         ]);
+    }
+
+    public function test_update_a_address(): void
+    {
+        /** @var AddressRepositoryInterface $repository */
+        $repository = App::make(AddressRepository::class);
+        $factory = Address::factory()->make();
+        $address = Address::factory()->create();
+        $dto = new AddressDTO($factory->street, $factory->city, $factory->state);
+
+        $count = $repository->update($address->id, $dto);
+
+        $this->assertEquals(1, $count);
+        $this->assertDatabaseCount('addresses', 1);
+        $this->assertDatabaseHas('addresses', [
+            'street' => $factory->street,
+            'city' => $factory->city,
+            'state' => $factory->state->value,
+        ]);
+    }
+
+    public function test_delete_a_address(): void
+    {
+        /** @var AddressRepositoryInterface $repository */
+        $repository = App::make(AddressRepository::class);
+        $address = Address::factory()->create();
+
+        $deleted = $repository->delete($address->id);
+
+        $this->assertEquals(true, $deleted);
+        $this->assertDatabaseCount('addresses', 0);
     }
 }
