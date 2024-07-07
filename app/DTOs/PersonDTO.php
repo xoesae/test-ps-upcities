@@ -14,6 +14,6 @@ readonly class PersonDTO
         public DateTime $birth,
         public string $email,
         public string $phoneNumber,
-        public int $addressId,
+        public ?int $addressId = null,
     ) {}
 }
