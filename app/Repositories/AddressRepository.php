@@ -8,9 +8,9 @@ use App\DTOs\AddressDTO;
 use App\Interfaces\AddressRepositoryInterface;
 use App\Models\Address;
 
-class AddressRepository implements AddressRepositoryInterface
+readonly class AddressRepository implements AddressRepositoryInterface
 {
-    public function __construct(private readonly Address $address)
+    public function __construct(private Address $address)
     {
     }
 

@@ -58,7 +58,7 @@ class AddressRepositoryTest extends TestCase
 
         $deleted = $repository->delete($address->id);
 
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
         $this->assertDatabaseCount('addresses', 0);
     }
 }

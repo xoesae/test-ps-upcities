@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $street
  * @property string $city
  * @property state $state
+ * @property int $id
  */
 class Address extends Model
 {

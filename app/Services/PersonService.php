@@ -12,14 +12,15 @@ use App\Interfaces\AddressRepositoryInterface;
 use App\Interfaces\PersonRepositoryInterface;
 use App\Models\Person;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
-class PersonService
+readonly class PersonService
 {
     public function __construct(
-        private readonly PersonRepositoryInterface $personRepository,
-        private readonly AddressRepositoryInterface $addressRepository
+        private PersonRepositoryInterface  $personRepository,
+        private AddressRepositoryInterface $addressRepository
     ) {
     }
 
@@ -28,11 +29,14 @@ class PersonService
         return $this->personRepository->listAllPaginated($perPage, $page);
     }
 
+    /**
+     * @throws PersonNotFoundException
+     */
     public function findById(int $id): Person
     {
         try {
             return $this->personRepository->findById($id);
-        } catch (\Exception) {
+        } catch (Exception) {
             throw new PersonNotFoundException();
         }
     }

@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $email
  * @property string $phone_number
  * @property int $address_id
+ * @property int $id
+ * @property Address $address
  */
 class Person extends Model
 {

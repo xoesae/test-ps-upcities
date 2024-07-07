@@ -47,6 +47,7 @@ class PersonRepositoryTest extends TestCase
         /** @var PersonRepositoryInterface $repository */
         $repository = App::make(PersonRepositoryInterface::class);
         $factory = Person::factory()->make();
+        /** @var Person $person */
         $person = Person::factory()->create();
         $dto = new PersonDTO(
             $factory->name,
@@ -77,7 +78,7 @@ class PersonRepositoryTest extends TestCase
 
         $deleted = $repository->delete($person->id);
 
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
         $this->assertDatabaseCount('people', 0);
     }
 
@@ -90,7 +91,7 @@ class PersonRepositoryTest extends TestCase
         $person = $repository->findById($person->id);
 
         $this->assertInstanceOf(Person::class, $person);
-        $this->assertEquals(true, $person->relationLoaded('address'));
+        $this->assertTrue($person->relationLoaded('address'));
         $this->assertInstanceOf(Address::class, $person->address);
     }
 

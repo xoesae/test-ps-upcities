@@ -9,9 +9,9 @@ use App\Interfaces\PersonRepositoryInterface;
 use App\Models\Person;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class PersonRepository implements PersonRepositoryInterface
+readonly class PersonRepository implements PersonRepositoryInterface
 {
-    public function __construct(private readonly Person $person)
+    public function __construct(private Person $person)
     {
     }
 

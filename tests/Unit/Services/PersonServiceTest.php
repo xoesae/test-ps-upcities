@@ -17,7 +17,7 @@ class PersonServiceTest extends TestCase
 
     public function test_creates_a_person_with_address(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
         $factory = Person::factory()->make();
 
@@ -53,7 +53,7 @@ class PersonServiceTest extends TestCase
 
     public function test_update_a_person_with_address(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
         $factory = Person::factory()->make();
         $person = Person::factory()->create();
@@ -92,33 +92,36 @@ class PersonServiceTest extends TestCase
 
     public function test_delete_a_person_with_address(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
         $person = Person::factory()->create();
 
         $deleted = $personService->delete($person->id);
 
-        $this->assertEquals(true, $deleted);
+        $this->assertTrue($deleted);
         $this->assertDatabaseCount('people', 0);
         $this->assertDatabaseCount('addresses', 0);
     }
 
+    /**
+     * @throws PersonNotFoundException
+     */
     public function test_find_person_by_id(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
         $person = Person::factory()->create();
 
         $person = $personService->findById($person->id);
 
         $this->assertInstanceOf(Person::class, $person);
-        $this->assertEquals(true, $person->relationLoaded('address'));
+        $this->assertTrue($person->relationLoaded('address'));
         $this->assertInstanceOf(Address::class, $person->address);
     }
 
     public function test_find_person_with_wrong_id(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
 
         try {
@@ -130,7 +133,7 @@ class PersonServiceTest extends TestCase
 
     public function test_list_all_people(): void
     {
-        /** @var \App\Services\PersonService $personService */
+        /** @var PersonService $personService */
         $personService = App::make(PersonService::class);
         Person::factory()->count(10)->create();
         $perPage = 5;

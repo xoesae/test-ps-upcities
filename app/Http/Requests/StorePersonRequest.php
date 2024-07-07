@@ -6,6 +6,10 @@ use App\Rules\CPF;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $document_number
+ * @property string $phone_number
+ */
 class StorePersonRequest extends FormRequest
 {
     /**

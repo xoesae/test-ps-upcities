@@ -22,7 +22,7 @@ class PersonController extends Controller
     public function index(Request $request): View|Factory|Application
     {
         $perPage = $request->input('perPage', 10);
-        $page = $request->input('page', null);
+        $page = $request->input('page');
         $people = $this->personService->listAllPaginated($perPage, $page);
 
         return view('person.index', compact('people'));
