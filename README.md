@@ -2,6 +2,8 @@
 
 ## Passo a passo para a execução
 
+- Tenha o docker instalado na máquina
+- Caso o SO for windows, instale e configure o wsl2 junto com o docker
 - Faça clone do projeto
 - Entre na pasta do projeto
 - Crie um arquivo `.env` com base no `.env.example` com o comando:
