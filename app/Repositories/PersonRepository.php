@@ -48,7 +48,7 @@ readonly class PersonRepository implements PersonRepositoryInterface
         return $this->person->newQuery()
             ->select(['*'])
             ->with('address')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('id', 'DESC')
             ->paginate(perPage: $perPage, page: $page);
     }
 
